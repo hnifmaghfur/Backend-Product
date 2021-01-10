@@ -6,6 +6,7 @@ var logger = require("morgan");
 require("dotenv").config();
 var authRouter = require("./src/routes/auth");
 var productRouter = require("./src/routes/product");
+var searchRouter = require("./src/routes/search");
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.get("/", function (req, res) {
 
 app.use(`${prefix}/auth`, authRouter);
 app.use(`${prefix}/product`, productRouter);
+app.use(`${prefix}/products`, searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

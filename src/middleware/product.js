@@ -20,9 +20,7 @@ const postValidate = (req, res, next) => {
   const schema = joi.object({
     name: joi.string().required(),
     price: joi.number().required(),
-    id_store: joi.number().required(),
   });
-
 
   const validate = schema.validate(req.body);
   if (validate.error) {

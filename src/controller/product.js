@@ -71,6 +71,7 @@ const patchProduct = async (req, res) => {
 const postProduct = async (req, res) => {
   try {
     const { id } = req.token;
+    console.log(req);
     const data = req.body;
     const photo = req.file.filename;
     const product = await productModel.postProduct({
