@@ -7,8 +7,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE || "ecommerce",
 });
 
-connection.connect();
-module.exports = conn;
+exports.connection = connection;
 
 const connect = () => {
   connection.connect((err) => {

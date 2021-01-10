@@ -4,9 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
-var usersRouter = require("./src/routes/users");
+var authRouter = require("./src/routes/auth");
+var productRouter = require("./src/routes/product");
 
 var app = express();
+
+const prefix = process.env.PREFIX_URL;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -23,7 +26,8 @@ app.get("/", function (req, res) {
   res.status(200).send({ message: "success." });
 });
 
-app.use("/users", usersRouter);
+app.use(`${prefix}/auth`, authRouter);
+app.use(`${prefix}/product`, productRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
